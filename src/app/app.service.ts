@@ -26,4 +26,9 @@ export class AppService {
         this.tareas.push(new Tarea(id, titulo, minutos));
         return this.tareas;
     }
+
+    public Borrar(tarea){
+        this.tareas = tarea;
+        return this.tareas;
+    }
 }

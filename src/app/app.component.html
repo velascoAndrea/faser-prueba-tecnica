@@ -8,6 +8,7 @@
 			<th scope="col">ID</th>
 			<th scope="col">TITULO</th>
 			<th scope="col">MINUTOS</th>
+			<th scope="col">Acciones</th>
 		  </tr>
 		</thead>
 		<tbody *ngFor="let tarea of tareas">
@@ -15,16 +16,17 @@
 			<td>{{tarea.id}}</td>
 			<td>{{tarea.titulo}}</td>
 			<td>{{tarea.minutos}} minutos</td>
+			<td><button type="button" class="btn btn-danger" (click)="Borrar(tarea.id)">Borrar</button></td>
 		  </tr>
 		</tbody>
 	  </table>
 	</div>
 
-	
+	<div class="row">
 	<div class="form-group col-md-6">
 		<h5>AGREGAR NUEVA TAREA</h5>
 		<label for="ID">Id</label>
-		<input type="number" class="form-control" id="id" value="" placeholder="id" #txtid>
+		<input type="nu" class="form-control" id="id" value="" placeholder="id" #txtid>
 
 		<label for="TITULO">Titulo</label>
 		<input type="text" class="form-control" id="title" value="" placeholder="titulo" #txttitulo>
@@ -37,4 +39,8 @@
 		</div>
 		<small><p class="text-error">{{this.mensajeError}}</p></small>
 	</div> 
+	<div class="col-md-6 pt-6">
+		<button type="button" class="btn btn-success btn-block" (click)="Ordenar()">Ordenar</button>
+	</div>
+</div>
 </div>
