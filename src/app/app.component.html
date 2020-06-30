@@ -2,7 +2,7 @@
 	<h1>Prueba técnica - Estudio Faser</h1>
 	<h2>Listado de tareas</h2>
 	<div class="table-responsive">
-	<table class="table table-hover">
+	<table class="table table-hover" id="table">
 		<thead>
 		  <tr>
 			<th scope="col">ID</th>
@@ -11,13 +11,18 @@
 			<th scope="col">Acciones</th>
 		  </tr>
 		</thead>
-		<tbody *ngFor="let tarea of tareas">
-		  <tr class="clickable-row">
-			<td>{{tarea.id}}</td>
+		<tbody *ngFor="let tarea of tareas ">
+		<tr class="clickable-row" id="{{tarea.id}}">
+			
+			<td >{{tarea.id}}</td>
 			<td>{{tarea.titulo}}</td>
 			<td>{{tarea.minutos}} minutos</td>
-			<td><button type="button" class="btn btn-danger" (click)="Borrar(tarea.id)">Borrar</button></td>
-		  </tr>
+			<td>
+				<button type="button" class="btn btn-danger" (click)="Borrar(tarea.id)">Borrar</button>
+				<button  type="button" class="btn btn-success" (click)="Marcar(tarea.id)">Marcar</button>
+				<button  type="button" class="btn btn-warning" (click)="DesMarcar(tarea.id)">Desmarcar</button>
+			</td>
+	   </tr>
 		</tbody>
 	  </table>
 	</div>

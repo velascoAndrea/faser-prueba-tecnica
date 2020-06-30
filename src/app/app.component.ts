@@ -10,7 +10,7 @@ import { Tarea } from './tarea';
 export class AppComponent {
 	tareas: Tarea[];
 	mensajeError: string;
-	
+	color :"black"
 	constructor(
         public service: AppService,
 	) { 
@@ -27,7 +27,12 @@ export class AppComponent {
 
 	async crearTarea(identi:number,titulo: string,time:number){
 		this.mensajeError = '';
-		console.log(this.tareas);
+
+		if(identi===undefined || titulo==="" || time === undefined){
+			this.mensajeError = 'No se llenaron todos los campos';
+			return;
+		}
+
 		for (let i in this.tareas) {
 			if(identi === this.tareas[i].id || identi.toString() === this.tareas[i].id.toString()){
 				this.mensajeError = 'Este Id ya fue agregado,intente con uno nuevoi'
@@ -53,7 +58,7 @@ export class AppComponent {
 	}
 
 	Ordenar(){
-		//Algoritmo De Ordenamiento Burbuja Para Ordenar
+		//Algoritmo De Ordenamiento Burbuja
 		var n, i, k, aux;
     	n = this.tareas.length
 		for (k = 1; k < n; k++) {
@@ -66,4 +71,21 @@ export class AppComponent {
 			}
 		}
 	}
+
+	
+	Marcar(id:number){
+		// se llama directamente a la fila, cada fila tiene un ID diferente es por eso que cambia
+		var fila = document.getElementById(id.toString()).style.backgroundColor = "lightblue";;
+		
+	}
+
+	DesMarcar(id:number){
+		var fila = document.getElementById(id.toString()).style.backgroundColor = "white";;
+		
+	}
+
+
+
+
+	
 }
