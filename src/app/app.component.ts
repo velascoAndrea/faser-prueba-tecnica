@@ -9,7 +9,8 @@ import { Tarea } from './tarea';
 })
 export class AppComponent {
 	tareas: Tarea[];
-
+	mensajeError: string;
+	
 	constructor(
         public service: AppService,
 	) { }
@@ -20,5 +21,18 @@ export class AppComponent {
 
 	async obtenerTareas() {
 		this.tareas = await this.service.obtenerTareas();
+	}
+
+	async crearTarea(identi:number,titulo: string,time:number){
+		this.mensajeError = '';
+		for (let i in this.tareas) {
+			if(identi === this.tareas[i].id){
+				this.mensajeError = 'Este Id ya fue agregado,intente con uno nuevo'
+				return;
+			}
+		}
+		
+		this.tareas = await this.service.CrearTarea(identi,titulo,time);
+		//console.log(titulo);
 	}
 }
